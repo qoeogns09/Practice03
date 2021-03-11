@@ -13,7 +13,7 @@ int main() {
 	while (1)
 	{
 		ShowMenu();
-		cout << "¼±ÅÃ: ";
+		cout << "Â¼Â±Ã…Ãƒ: ";
 		cin >> choice;
 		cout << endl;
 
