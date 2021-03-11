@@ -15,11 +15,11 @@ int accNum = 0;
 
 void ShowMenu() {
 	cout << "-----Menu-----" << endl;
-	cout << ";1. °èÁÂ°³¼³" << endl;
-	cout << "2. ÀÔ ±Ý" << endl;
-	cout << "3. Ãâ ±Ý" << endl;
-	cout << "4. °èÁÂÁ¤º¸ ÀüÃ¼ Ãâ·Â" << endl;
-	cout << "5. ÇÁ·Î±×·¥ Á¾·á" << endl;
+	cout << ";1. ê³„ì¢Œê°œì„¤" << endl;
+	cout << "2. ìž… ê¸ˆ" << endl;
+	cout << "3. ì¶œ ê¸ˆ" << endl;
+	cout << "4. ê³„ì¢Œì •ë³´ ì „ì²´ ì¶œë ¥" << endl;
+	cout << "5. í”„ë¡œê·¸ëž¨ ì¢…ë£Œ" << endl;
 }
 
 void MakeAccount() {
@@ -27,10 +27,10 @@ void MakeAccount() {
 	char name[NAME_LEN];
 	int balance;
 
-	cout << "[°èÁÂ°³¼³]" << endl;
-	cout << "°èÁÂID: "; cin >> id;
-	cout << "ÀÌ ¸§: "; cin >> name;
-	cout << "ÀÔ±Ý¾×: "; cin >> balance;
+	cout << "[ê³„ì¢Œê°œì„¤]" << endl;
+	cout << "ê³„ì¢ŒID: "; cin >> id;
+	cout << "ì´ ë¦„: "; cin >> name;
+	cout << "ìž…ê¸ˆì•¡: "; cin >> balance;
 	cout << endl;
 
 	accArr[accNum].accID = id;
@@ -42,14 +42,14 @@ void MakeAccount() {
 void DepositMoney(){
 	int money;
 	int id;
-	cout << "[ÀÔ ±Ý]" << endl;
-	cout << "°èÁÂID: "; cin >> id;
-	cout << "ÀÔ±Ý¾×: "; cin >> money;
+	cout << "[ìž… ê¸ˆ]" << endl;
+	cout << "ê³„ì¢ŒID: "; cin >> id;
+	cout << "ìž…ê¸ˆì•¡: "; cin >> money;
 
 	for (int i = 0; i < accNum; i++) {
 		if (accArr[i].accID == id) {
 			accArr[i].balance += money;
-			cout << "ÀÔ±Ý¿Ï·á" << endl << endl;
+			cout << "ìž…ê¸ˆì™„ë£Œ" << endl << endl;
 			return;
 		}
 	}
@@ -58,25 +58,25 @@ void DepositMoney(){
 void WithdrawMoney() {
 	int money;
 	int id;
-	cout << "[Ãâ ±Ý]" << endl;
-	cout << "°èÁÂID: "; cin >> id;
-	cout << "Ãâ±Ý¾×: "; cin >> money;
+	cout << "[ì¶œ ê¸ˆ]" << endl;
+	cout << "ê³„ì¢ŒID: "; cin >> id;
+	cout << "ì¶œê¸ˆì•¡: "; cin >> money;
 
 	for (int i = 0; i < accNum; i++) {
 		if (accArr[i].accID == id) {
 			if (accArr[i].balance < money) {
-				cout << "ÀÜ¾×ºÎÁ·" << endl << endl;
+				cout << "ìž”ì•¡ë¶€ì¡±" << endl << endl;
 				return;
 			}
 		}
 	}
-	cout << "À¯È¿ÇÏÁö ¾ÊÀº ID ÀÔ´Ï´Ù." << endl << endl;
+	cout << "ìœ íš¨í•˜ì§€ ì•Šì€ ID ìž…ë‹ˆë‹¤." << endl << endl;
 }
 
 void ShowAllAccInfo() {
 	for (int i = 0; i < accNum; i++) {
-		cout << "°èÁÂID: " << accArr[i].accID << endl;
-		cout << "ÀÌ ¸§: " << accArr[i].cusName << endl;
-		cout << "ÀÜ ¾×: " << accArr[i].balance << endl << endl;
+		cout << "ê³„ì¢ŒID: " << accArr[i].accID << endl;
+		cout << "ì´ ë¦„: " << accArr[i].cusName << endl;
+		cout << "ìž” ì•¡: " << accArr[i].balance << endl << endl;
 	}
 }
