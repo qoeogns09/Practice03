@@ -22,6 +22,7 @@ class Account{
             cusName= new char[strlen(name)+1];
             strcpy(cusName, name);
         }
+
         int GetAccID() {return accID; }
 
         void Deposit(int money){
@@ -46,13 +47,15 @@ class Account{
             delete []cusName;
         }
 };
+
 Account * accArr[100];
 int accNum=0;
 
 int main(void){
     int choice;
 
-    while(1){
+    while(1)
+    {
         ShowMenu();
         cout<<"¼±ÅÃ: ";
         cin>>choice;
