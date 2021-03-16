@@ -30,7 +30,7 @@ class Account{
             strcpy(cusName, copy.cusName);
         }
         
-        int GetAccID() {return accID; }
+        int GetAccID() const {return accID; }
 
         void Deposit(int money){
             balance+=money;
@@ -44,7 +44,7 @@ class Account{
             return money;
         }
 
-        void ShowAccInfo(){
+        void ShowAccInfo() const {
             cout<<"°èÁÂID: "<<accID<<endl;
             cout<<"ÀÌ ¸§: "<<cusName<<endl;
             cout<<"ÀÜ ¾×: "<<balance<<endl;
