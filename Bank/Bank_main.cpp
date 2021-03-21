@@ -2,10 +2,11 @@
 #include "Bank.cpp"
 
 int main(void){
+    AccountHandler manager;
     int choice;
 
     while(1){
-        ShowMenu();
+        manager.ShowMenu();
         cout<<"¼±ÅÃ: ";
         cin>>choice;
         cout<<endl;
@@ -13,20 +14,18 @@ int main(void){
         switch(choice)
         {
         case MAKE:
-            MakeAccount();
+            manager.MakeAccount();
             break;
         case DEPOSIT:
-            DepositMoney();
+            manager.DepositMoney();
             break;
         case WITHDRAW:
-            WithdrawMoney();
+            manager.WithdrawMoney();
             break;
         case INQUIRE:
-            ShowAllAccInfo();
+            manager.ShowAllAccInfo();
             break;
         case EXIT:
-            for(int i=0; i<accNum; i++)
-                delete accArr[i];
             return 0;
         default:
             cout<<"Illegal selection.."<<endl;

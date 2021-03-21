@@ -1,6 +1,22 @@
 #include "Bank.h"
 
-void ShowMenu()
+
+class AccountHandler
+{
+    private:
+        Account * accArr[100];
+        int accNum=0;
+    public:
+        AccountHandler();
+        void ShowMenu() const;
+        void MakeAccount();
+        void DepositMoney();
+        void WithdrawMoney();
+        void ShowAllAccInfo() const;
+        ~AccountHandler();
+};
+
+void AccountHandler::ShowMenu() const
 {
     cout<<"-----Menu-----"<<endl;
     cout<<"1. 계좌개설"<<endl;
@@ -10,7 +26,7 @@ void ShowMenu()
     cout<<"5. 프로그램 종료"<<endl;
 }
 
-void MakeAccount()
+void AccountHandler::MakeAccount()
 {
     int id;
     char name[NAME_LEN];
@@ -25,7 +41,7 @@ void MakeAccount()
     accArr[accNum++]=new Account(id, balance, name);
 }
 
-void DepositMoney()
+void AccountHandler::DepositMoney()
 {
     int money;
     int id;
@@ -44,7 +60,7 @@ void DepositMoney()
     cout<<"유효하지 않은 ID 입니다."<<endl<<endl;
 }
 
-void WithdrawMoney() {
+void AccountHandler::WithdrawMoney() {
 	int money;
 	int id;
 	cout << "[출 금]" << endl;
@@ -65,9 +81,17 @@ void WithdrawMoney() {
 	cout << "유효하지 않은 ID 입니다." << endl << endl;
 }
 
-void ShowAllAccInfo() {
+AccountHandler::AccountHandler() : accNum(0){}
+
+void AccountHandler::ShowAllAccInfo() const{
 	for (int i = 0; i < accNum; i++) {
         accArr[i]->ShowAccInfo();
         cout<<endl;
 	}
+}
+
+AccountHandler::~AccountHandler()
+{
+    for(int i=0; i<accNum; i++)
+        delete accArr[i];
 }
