@@ -14,6 +14,9 @@ class AccountHandler
         void WithdrawMoney();
         void ShowAllAccInfo() const;
         ~AccountHandler();
+    protected:
+        void MakeNormalAccount();
+        void MakeCreditAccount();
 };
 
 void AccountHandler::ShowMenu() const
@@ -28,18 +31,66 @@ void AccountHandler::ShowMenu() const
 
 void AccountHandler::MakeAccount()
 {
+    int sel;
+    cout<<"[계좌종류선택]"<<endl;
+    cout<<"1.보통예금계좌 ";
+    cout<<"2. 신용신뢰계좌 "<<endl;
+    cout<<"선택: ";
+    cin>>sel;
+
+    if(sel==NORMAL)
+        MakeNormalAccount();
+    else
+        MakeCreditAccount();
+}
+
+void AccountHandler::MakeNormalAccount()
+{
     int id;
     char name[NAME_LEN];
     int balance;
+    int interRate;
 
-    cout<<"[계좌개설]"<<endl;
+    cout<<"[보통예금계좌 개설]"<<endl;
     cout<<"계좌ID: "; cin>>id;
     cout<<"이 름: "; cin>>name;
     cout<<"입금액: "; cin>>balance;
+    cout<<"이자율: "; cin>>interRate;
     cout<<endl;
 
-    accArr[accNum++]=new Account(id, balance, name);
+    accArr[accNum++]=new NormalAccount(id, balance, name, interRate);
 }
+
+void AccountHandler::MakeCreditAccount()
+{
+    int id;
+    char name[NAME_LEN];
+    int balance;
+    int interRate;
+    int creditLevel;
+
+    cout<<"[신용신뢰계좌 개설]"<<endl;
+    cout<<"계좌ID: "; cin>>id;
+    cout<<"이 름: "; cin>>name;
+    cout<<"입금액: "; cin>>balance;
+    cout<<"이자율: "; cin>>interRate;
+    cout<<"신용등급(1toA, 2toB, 3toC): "; cin>>creditLevel;
+    cout<<endl;
+
+    switch(creditLevel)
+    {
+        case 1:
+            accArr[accNum++]=new HighCreditAccount(id, balance, name, interRate, LEVEL_A);
+            break;
+        case 2:
+            accArr[accNum++]=new HighCreditAccount(id, balance, name, interRate, LEVEL_B);
+            break;
+        case 3:
+            accArr[accNum++]=new HighCreditAccount(id, balance, name, interRate, LEVEL_C);
+            break;
+    }
+}
+    
 
 void AccountHandler::DepositMoney()
 {
